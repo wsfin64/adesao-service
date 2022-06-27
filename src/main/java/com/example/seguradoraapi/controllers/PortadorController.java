@@ -36,4 +36,9 @@ public class PortadorController {
     public void cancelarAdesao(@PathVariable Long id){
         portadorService.apagarPortador(id);
     }
+
+    @GetMapping("faturamento/{diaFaturamento}")
+    public ResponseEntity<List<Portador>> listarPortadoresDiaFaturamento(@PathVariable Long diaFaturamento){
+        return ResponseEntity.ok(portadorService.listarPortadorPorDiaFaturamento(diaFaturamento));
+    }
 }

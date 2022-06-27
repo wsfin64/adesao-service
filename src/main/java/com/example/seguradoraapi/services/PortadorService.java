@@ -39,4 +39,8 @@ public class PortadorService {
         }
     }
 
+    public List<Portador> listarPortadorPorDiaFaturamento(Long diaFaturamento){
+        return portadorRespository.findPortadorByDiaFaturamento(diaFaturamento);
+    }
+
 }
