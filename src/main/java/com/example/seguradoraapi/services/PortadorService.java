@@ -1,5 +1,7 @@
 package com.example.seguradoraapi.services;
 
+import com.example.seguradoraapi.entities.Assistencia;
+import com.example.seguradoraapi.entities.DTO.PortadorDTO;
 import com.example.seguradoraapi.entities.Portador;
 import com.example.seguradoraapi.repositories.AssistenciaRepository;
 import com.example.seguradoraapi.repositories.PortadorRespository;
@@ -25,8 +27,13 @@ public class PortadorService {
         return portadorRespository.findById(id).get();
     }
 
-    public Portador cadastrarPortador(Portador portador){
-        portador.setAdesaoAtiva(true);
+    public Portador cadastrarPortador(PortadorDTO portadorDTO){
+
+        Assistencia assistencia = assistenciaRepository.findById(portadorDTO.getIdAssistencia()).get();
+
+        Portador portador = new Portador(portadorDTO.getNome(), portadorDTO.getCpf(), portadorDTO.getTelefone(),
+                assistencia, portadorDTO.getDiaFaturamento());
+
         return portadorRespository.save(portador);
     }
 

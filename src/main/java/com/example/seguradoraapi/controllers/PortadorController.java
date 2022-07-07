@@ -1,5 +1,6 @@
 package com.example.seguradoraapi.controllers;
 
+import com.example.seguradoraapi.entities.DTO.PortadorDTO;
 import com.example.seguradoraapi.entities.Portador;
 import com.example.seguradoraapi.services.PortadorService;
 
@@ -28,8 +29,8 @@ public class PortadorController {
     }
 
     @PostMapping
-    public ResponseEntity<Portador> cadastrarPortador(@RequestBody Portador portador){
-        return ResponseEntity.ok(portadorService.cadastrarPortador(portador));
+    public ResponseEntity<Portador> cadastrarPortador(@RequestBody PortadorDTO portadorDTO){
+        return ResponseEntity.ok(portadorService.cadastrarPortador(portadorDTO));
     }
 
     @DeleteMapping("/{id}")
